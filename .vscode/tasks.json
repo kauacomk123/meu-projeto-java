@@ -1,0 +1,22 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Compilar JUnit",
+            "type": "shell",
+            "command": "if (!(Test-Path bin)) { mkdir bin }; javac -cp '.;lib/*' -d bin src/Pessoa.java src/TestPessoa.java",
+            "group": "build"
+        },
+        {
+            "label": "Executar Testes",
+            "type": "shell",
+            "command": "java -cp 'bin;lib/*' org.junit.runner.JUnitCore TestPessoa",
+            "dependsOn": "Compilar JUnit",
+            "problemMatcher": [],
+            "group": {
+                "kind": "test",
+                "isDefault": true
+            }
+        }
+    ]
+}
